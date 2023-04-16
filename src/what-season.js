@@ -24,12 +24,12 @@ function getSeason(date) {
 
 
   let season;
-  if(date===undefined) {season = 'Unable to determine the time of year!'} else
-  if (!(date instanceof Date)) {
+  if(date===undefined) {season = 'Unable to determine the time of year!'
+  } else if (!(date instanceof Date)) {
     throw new Error("Invalid date!");
-  }
-
-  else {
+  } else if (Object.getOwnPropertyNames(date).length>0) {
+    throw new Error("Invalid date!");
+  } else {
     let month = date.getMonth() + 1;
     if(month===12) {season = 'winter'}
     if(month>0 && month<3) {season = 'winter'}
